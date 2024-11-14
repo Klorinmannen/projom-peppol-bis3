@@ -1,0 +1,22 @@
+# Block everything.
+/*
+
+# White-list files.
+!.gitignore
+!.gitattributes
+!README.md
+!LICENSE
+!composer.json
+!composer.lock
+!phpunit.xml
+!phpunit_coverage.txt
+!phpunit.txt
+
+# White-list entire directories.
+!src/
+!tests/
+!.github/
+
+# Ignore crap files.
+**/*.*~
+**/*#*
