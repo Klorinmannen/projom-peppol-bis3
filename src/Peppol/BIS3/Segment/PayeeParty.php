@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Projom\Peppol\BIS3\Segment;
 
+use DOMDocument;
+use DOMElement;
+
 use Projom\Peppol\BIS3\Segment\SegmentInterface;
 
 class PayeeParty implements SegmentInterface
@@ -15,23 +18,19 @@ class PayeeParty implements SegmentInterface
 		$this->data = $data;
 	}
 
-	public function build(): string
-	{
-		return '';
-	}
-
-	public function validate(): bool
-	{
-		return true;
-	}
-
-	public function __toString(): string
-	{
-		return '';
-	}
-
 	public static function create(array $data): PayeeParty
 	{
 		return new PayeeParty($data);
+	}
+
+	public function build(DOMDocument $document): DOMElement
+	{
+		$payeeParty = $document->createElement('cac:PayeeParty');
+		return $payeeParty;
+	}
+
+	public function validate(): array
+	{
+		return [];
 	}
 }

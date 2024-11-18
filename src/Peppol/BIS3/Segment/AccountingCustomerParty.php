@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Projom\Peppol\BIS3\Segment;
 
+use DOMDocument;
+use DOMElement;
+
 use Projom\Peppol\BIS3\Segment\SegmentInterface;
 
 class AccountingCustomerParty implements SegmentInterface
@@ -20,18 +23,14 @@ class AccountingCustomerParty implements SegmentInterface
 		return new AccountingCustomerParty($data);
 	}
 
-	public function build(): string
+	public function build(DOMDocument $document): DOMElement
 	{
-		return '';
+		$customerParty = $document->createElement('cac:AccountingCustomerParty');
+		return $customerParty;
 	}
 
-	public function validate(): bool
+	public function validate(): array
 	{
-		return true;
-	}
-
-	public function __toString(): string
-	{
-		return '';
+		return [];
 	}
 }

@@ -8,7 +8,7 @@ use DOMDocument;
 
 use Projom\Peppol\BIS3\Document;
 
-class Invoice extends Document
+class CreditNote extends Document
 {
 	public function __construct(array $data)
 	{
@@ -16,9 +16,9 @@ class Invoice extends Document
 		$this->document = new DOMDocument('1.0', 'UTF-8');
 	}
 
-	public static function create(array $data): Invoice
+	public static function create(array $data): CreditNote
 	{
-		return new Invoice($data);
+		return new CreditNote($data);
 	}
 
 	public function build(): void {}

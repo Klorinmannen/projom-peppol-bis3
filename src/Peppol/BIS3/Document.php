@@ -5,37 +5,28 @@ declare(strict_types=1);
 namespace Projom\Peppol\BIS3;
 
 use DOMDocument;
-use Projom\Peppol\BIS3\Segment\AccountingCustomerParty;
-use Projom\Peppol\BIS3\Segment\AccountingSupplierParty;
-use Projom\Peppol\BIS3\Segment\PayeeParty;
 
-class Document
+/**
+ * Base class for all BIS3 documents.
+ */
+abstract class Document
 {
-	private array $data = [];
-	private array $segments = [];
-	private array $errors = [];
-	private null|DOMDocument $document = null;
+	protected array $data = [];
+	protected array $segments = [];
+	protected array $errors = [];
+	protected null|DOMDocument $document = null;
 
-	public function __construct(array $data)
+	abstract public static function create(array $data): Document;
+	abstract public function build(): void;
+	abstract public function validate(): void;
+
+	public function XML(): string
 	{
-		$this->data = $data;
-		$this->document = new DOMDocument('1.0', 'utf-8');
+		return $this->document->saveXML();
 	}
 
-	public static function create(array $data): Document
+	public function saveXML(string $filename): void
 	{
-		return new Document($data);
+		$this->document->save($filename);
 	}
-
-	public function build(): void
-	{
-		foreach ($this->data as $key => $data) {
-			$this->segments[$key] = match ($key) {
-				'AccountingCustomerParty' => AccountingCustomerParty::create($data),
-				'AccountingSupplierParty' => AccountingSupplierParty::create($data),
-				'PayeeParty' => PayeeParty::create($data),
-				default => throw new \Exception("Invalid segment: $key", 400)
-			};
-		} 
-	}	
 }
