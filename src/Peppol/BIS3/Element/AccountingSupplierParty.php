@@ -7,9 +7,9 @@ namespace Projom\Peppol\BIS3\Segment;
 use DOMDocument;
 use DOMElement;
 
-use Projom\Peppol\BIS3\Segment\SegmentInterface;
+use Projom\Peppol\BIS3\Segment\ELementInterface;
 
-class AccountingSupplierParty implements SegmentInterface
+class AccountingSupplierParty implements ELementInterface
 {
 	private array $data = [];
 

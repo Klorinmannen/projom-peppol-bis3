@@ -7,9 +7,9 @@ namespace Projom\Peppol\BIS3\Segment;
 use DOMDocument;
 use DOMElement;
 
-use Projom\Peppol\BIS3\Segment\SegmentInterface;
+use Projom\Peppol\BIS3\Segment\ELementInterface;
 
-class PayeeParty implements SegmentInterface
+class AccountingCustomerParty implements ELementInterface
 {
 	private array $data = [];
 
@@ -18,15 +18,15 @@ class PayeeParty implements SegmentInterface
 		$this->data = $data;
 	}
 
-	public static function create(array $data): PayeeParty
+	public static function create(array $data): AccountingCustomerParty
 	{
-		return new PayeeParty($data);
+		return new AccountingCustomerParty($data);
 	}
 
 	public function build(DOMDocument $document): DOMElement
 	{
-		$payeeParty = $document->createElement('cac:PayeeParty');
-		return $payeeParty;
+		$customerParty = $document->createElement('cac:AccountingCustomerParty');
+		return $customerParty;
 	}
 
 	public function validate(): array
