@@ -6,10 +6,5 @@ namespace Projom\Peppol\BIS3\Invoice;
 
 class Config
 {
-
-
-	public function __construct(array $data)
-	{
-		
-	}
+	public function __construct(array $data) {}
 }
