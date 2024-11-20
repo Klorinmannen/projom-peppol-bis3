@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Projom\Peppol\BIS3\Segment;
 
-use DOMDocument;
-use DOMElement;
-
-use Projom\Peppol\BIS3\Segment\ELementInterface;
+use Projom\Peppol\BIS3\Document\DOM;
+use Projom\Peppol\BIS3\Document\Element;
+use Projom\Peppol\BIS3\Element\ELementInterface;
 
 class PayeeParty implements ELementInterface
 {
@@ -23,7 +22,7 @@ class PayeeParty implements ELementInterface
 		return new PayeeParty($data);
 	}
 
-	public function build(DOMDocument $document): DOMElement
+	public function build(DOM $document): Element
 	{
 		$payeeParty = $document->createElement('cac:PayeeParty');
 		return $payeeParty;

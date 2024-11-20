@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Projom\Peppol;
 
-use Projom\Peppol\BIS3\CreditNote;
-use Projom\Peppol\BIS3\Invoice;
+use Projom\Peppol\BIS3\Document\CreditNote;
+use Projom\Peppol\BIS3\Document\Invoice;
 
 class BIS3
 {

@@ -2,18 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Projom\Peppol\BIS3;
+namespace Projom\Peppol\BIS3\Document;
 
-use DOMDocument;
-
-use Projom\Peppol\BIS3\Document;
+use Projom\Peppol\BIS3\Document\Document;
+use Projom\Peppol\BIS3\Document\DOM;
 
 class CreditNote extends Document
 {
 	public function __construct(array $data)
 	{
 		$this->data = $data;
-		$this->document = new DOMDocument('1.0', 'UTF-8');
+		$this->document = new DOM();
 	}
 
 	public static function create(array $data): CreditNote
@@ -24,4 +23,6 @@ class CreditNote extends Document
 	public function build(): void {}
 
 	public function validate(): void {}
+
+	public function processData(): void { }
 }
